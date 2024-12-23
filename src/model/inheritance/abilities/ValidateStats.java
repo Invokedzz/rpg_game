@@ -29,7 +29,7 @@ public final class ValidateStats {
 
         int verifyLevel;
 
-        System.out.println( "Enter your character level: " );
+        System.out.println( "Enter your character level, REMEMBER: atk, def and lvl must be equals!" );
 
         while ( !hasInt ( level ) ) {
 
@@ -47,7 +47,7 @@ public final class ValidateStats {
 
             while ( !hasInt ( level ) ) {
 
-                System.out.println( "Enter a valid integer level!" );
+                System.out.println( "Enter a valid level! (max: 100/min: 1)" );
 
                 level.next();
 
@@ -66,6 +66,8 @@ public final class ValidateStats {
         double verifyAttack;
 
         System.out.println( "Enter your character attack points: (max: 100/min: 5)" );
+
+        System.out.println("REMEMBER, atk, def and lvl must be equals!");
 
         while ( !hasDouble ( attackPoints ) ) {
 
@@ -103,6 +105,8 @@ public final class ValidateStats {
 
         System.out.println( "Enter your character defense points (max: 100/min: 5): " );
 
+        System.out.println("REMEMBER, atk, def and lvl must be equals!");
+
         while ( !hasDouble ( defensePoints ) ) {
 
             System.out.println( "Enter valid defense points!" );
@@ -139,9 +143,17 @@ public final class ValidateStats {
 
         if ( level != attackPoints || level != defensePoints ) {
 
-            if ( attackPoints != defensePoints ) throw new AttackPointsException( "Level, Attack and Defense must be equals." );
+            try {
 
-            throw new InvalidLevelException( "Level, Attack and Defense must be equals." );
+                if ( attackPoints != defensePoints ) throw new AttackPointsException( "Level, Attack and Defense must be equals." );
+
+                throw new InvalidLevelException( "Level, Attack and Defense must be equals." );
+
+            } catch ( AttackPointsException | InvalidLevelException error ) {
+
+                System.out.printf( "Error: %s", error.getMessage() );
+
+            }
 
         }
 
