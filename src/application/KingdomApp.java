@@ -2,9 +2,17 @@ package application;
 
 import java.util.Scanner;
 
+import model.entities.*;
+
+import model.inheritance.Human;
+
 import model.inheritance.abilities.ValidateAbilities;
 
 import model.inheritance.abilities.ValidateStats;
+
+import model.inheritance.abilities.ValidateUniqueAttributes;
+
+import model.inheritance.abilitiesenum.Abilities;
 
 public class KingdomApp {
 
@@ -58,6 +66,19 @@ public class KingdomApp {
 
                 validateStatsKnight.validateAllMethods( levelKnight, attackPointsKnight, defensePointsKnight );
 
+                try {
+
+                    Abilities knightAbility = Abilities.valueOf ( init.next() );
+
+                    Knight knight = new Knight( 1000.0, "Armor", "Sword", attackPointsKnight,
+                            defensePointsKnight, levelKnight, "idk", "idk", knightAbility );
+
+                } catch ( IllegalArgumentException error ) {
+
+                    System.out.printf( "Error: %s", error.getMessage() );
+
+                }
+
                 break;
 
             case 'p' | 'P':
@@ -68,6 +89,8 @@ public class KingdomApp {
 
                 ValidateStats validateStatsPaladin = new ValidateStats();
 
+                ValidateUniqueAttributes validatePaladinAttributes = new ValidateUniqueAttributes();
+
                 int levelPaladin = validateStatsPaladin.levelValidation( init );
 
                 double attackPointsPaladin = validateStatsPaladin.attackValidation( init );
@@ -76,11 +99,28 @@ public class KingdomApp {
 
                 validateStatsPaladin.validateAllMethods( levelPaladin, attackPointsPaladin, defensePointsPaladin);
 
+                try {
+
+                    Abilities paladinAbility = Abilities.valueOf ( init.next() );
+
+                    double divineStrike = validatePaladinAttributes.validateDivineStrike( init );
+
+                    Paladin paladin = new Paladin( 1000.0, "Armor", "Staff",
+                            attackPointsPaladin, defensePointsPaladin, levelPaladin, "idk", "idk", paladinAbility, divineStrike );
+
+                } catch ( IllegalArgumentException error ) {
+
+                    System.out.printf( "Error: %s", error.getMessage() );
+
+                }
+
                 break;
 
             case 'b' | 'B':
 
                 ValidateStats validateStatsBarbarian = new ValidateStats();
+
+                ValidateUniqueAttributes validateBarbarianAttributes = new ValidateUniqueAttributes();
 
                 int levelBarbarian = validateStatsBarbarian.levelValidation( init );
 
@@ -90,11 +130,28 @@ public class KingdomApp {
 
                 validateStatsBarbarian.validateAllMethods( levelBarbarian, attackPointsBarbarian, defensePointsBarbarian);
 
+                try {
+
+                    Abilities barbarianAbility = Abilities.valueOf ( init.next() );
+
+                    double fury = validateBarbarianAttributes.validateFury( init );
+
+                    Barbarian barbarian = new Barbarian( 1000.0, "Armor", "Club",
+                            attackPointsBarbarian, defensePointsBarbarian, levelBarbarian, "idk", "idk", barbarianAbility, fury );
+
+                } catch ( IllegalArgumentException error ) {
+
+                    System.out.printf( "Error: %s", error.getMessage() );
+
+                }
+
                 break;
 
             case 'm' | 'M':
 
                 ValidateStats validateStatsMage = new ValidateStats();
+
+                ValidateUniqueAttributes validateMageAttributes = new ValidateUniqueAttributes();
 
                 int levelMage = validateStatsMage.levelValidation( init );
 
@@ -103,6 +160,21 @@ public class KingdomApp {
                 double defensePointsMage = validateStatsMage.defensePoints( init );
 
                 validateStatsMage.validateAllMethods( levelMage, attackPointsMage, defensePointsMage);
+
+                try {
+
+                    Abilities mageAbility = Abilities.valueOf ( init.next() );
+
+                    double mana = validateMageAttributes.validateMana( init );
+
+                    Mage mage = new Mage( 1000.0, "Armor", "Staff",
+                            attackPointsMage, defensePointsMage, levelMage, "idk", "idk", mageAbility, mana );
+
+                } catch ( IllegalArgumentException error ) {
+
+                    System.out.printf( "Error: %s", error.getMessage() );
+
+                }
 
                 break;
 
