@@ -1,13 +1,12 @@
 package model.entities;
 
-package heritage.kingdom.model.entities;
+import model.inheritance.Human;
 
-import heritage.kingdom.model.inheritance.Human;
+import model.inheritance.abilities.ValidateAbilities;
 
-import heritage.kingdom.model.inheritance.abilities.ValidateAbilities;
-import heritage.kingdom.model.inheritance.abilitiesenum.Abilities;
+import model.inheritance.abilitiesenum.Abilities;
 
-import heritage.kingdom.model.inheritance.abilities.ValidateStats;
+import model.inheritance.abilities.ValidateStats;
 
 public class Knight extends Human {
 
