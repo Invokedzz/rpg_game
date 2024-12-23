@@ -4,6 +4,12 @@ package model.inheritance.abilities;
 
 // DEFENSE_BOOST, HEALING_BOOST
 
+import model.entities.*;
+
+import model.exceptions.InvalidAbilityException;
+
+import model.inheritance.abilitiesenum.Abilities;
+
 public final class ValidateAbilities {
 
     public double abilitiesKnight ( Knight knight ) {

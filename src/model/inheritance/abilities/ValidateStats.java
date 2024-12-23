@@ -1,5 +1,9 @@
 package model.inheritance.abilities;
 
+import model.exceptions.AttackPointsException;
+
+import model.exceptions.InvalidLevelException;
+
 import java.util.Scanner;
 
 public final class ValidateStats {
