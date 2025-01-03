@@ -33,7 +33,7 @@ public class KingdomApp {
 
             char playerOneChoice = init.next().charAt( 0 );
 
-            createYourCharacter( playerOneChoice, init );
+            Knight firstCharacter = createYourCharacter( playerOneChoice, init );
 
             System.out.println( "Player 2, choose your character!" );
 
@@ -41,7 +41,7 @@ public class KingdomApp {
 
             char playerTwoChoice = init.next().charAt( 0 );
 
-            createYourCharacter( playerTwoChoice, init );
+            Knight secondCharacter = createYourCharacter( playerTwoChoice, init );
 
 
     }
@@ -191,6 +191,8 @@ public class KingdomApp {
 
             case 'b' | 'B':
 
+                ValidateAbilities validateAbilitiesBarbarian = new ValidateAbilities();
+
                 ValidateStats validateStatsBarbarian = new ValidateStats();
 
                 ValidateUniqueAttributes validateBarbarianAttributes = new ValidateUniqueAttributes();
@@ -211,6 +213,51 @@ public class KingdomApp {
 
                     Barbarian barbarian = new Barbarian( 1000.0, "Armor", "Club",
                             attackPointsBarbarian, defensePointsBarbarian, levelBarbarian, "idk", "idk", barbarianAbility, fury );
+
+                    if ( barbarianAbility.equals( Abilities.valueOf ( "STRENGTH_BOOST" ) ) ) {
+
+                        double getBonusStats = validateAbilitiesBarbarian.abilitiesBarbarian( barbarian );
+
+                        double attackDeclaration = barbarian.declareAttack() + getBonusStats;
+
+                        double blockAttack = barbarian.blockAttack();
+
+                        double lifePoints = barbarian.calculateLifePoints();
+
+                        double getFury = barbarian.getFury();
+
+                        return new Barbarian( lifePoints, "Armor", "Club", attackDeclaration, blockAttack, levelBarbarian, "idk",
+                                "idk", barbarianAbility, getFury );
+
+                    }
+
+                    if ( barbarianAbility.equals( Abilities.valueOf ( "WRATH_BOOST" ) ) ) {
+
+                        double getBonusStats = validateAbilitiesBarbarian.abilitiesBarbarian( barbarian );
+
+                        double getFury = barbarian.getFury() + getBonusStats;
+
+                        double attackDeclaration = barbarian.declareAttack() + getFury;
+
+                        double blockAttack = barbarian.blockAttack() + getFury;
+
+                        double lifePoints = barbarian.calculateLifePoints() + getFury;
+
+                        return new Barbarian( lifePoints, "Armor", "Club", attackDeclaration, blockAttack, levelBarbarian, "idk",
+                                "idk", barbarianAbility, getFury );
+
+                    }
+
+                    double getFury = barbarian.getFury();
+
+                    double attackDeclaration = barbarian.declareAttack();
+
+                    double blockAttack = barbarian.blockAttack();
+
+                    double lifePoints = barbarian.calculateLifePoints();
+
+                    return new Barbarian( lifePoints, "Armor", "Club", attackDeclaration, blockAttack, levelBarbarian, "idk",
+                            "idk", barbarianAbility, getFury );
 
                 } catch ( IllegalArgumentException error ) {
 
