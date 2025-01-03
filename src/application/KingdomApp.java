@@ -46,7 +46,7 @@ public class KingdomApp {
 
     }
 
-    private static void createYourCharacter ( char playerChoice, Scanner init ) {
+    private static Knight createYourCharacter ( char playerChoice, Scanner init ) {
 
         switch ( playerChoice ) {
 
@@ -73,6 +73,32 @@ public class KingdomApp {
                     Knight knight = new Knight( 1000.0, "Armor", "Sword", attackPointsKnight,
                             defensePointsKnight, levelKnight, "idk", "idk", knightAbility );
 
+                    if ( knightAbility.equals( Abilities.valueOf ( "DEFENSE_BOOST" ) ) ) {
+
+                        double getBonusStats = validateAbilitiesKnight.abilitiesKnight( knight );
+
+                        double attackDeclaration = knight.declareAttack();
+
+                        double blockAttack = knight.blockAttack() + getBonusStats;
+
+                        double lifePoints = knight.calculateLifePoints();
+
+                        return new Knight( lifePoints, "Armor", "Sword", attackDeclaration, blockAttack,
+                                levelKnight, "idk", "idk", knightAbility );
+
+                    }
+
+                    double getBonusStats = validateAbilitiesKnight.abilitiesKnight( knight );
+
+                    double attackDeclaration = knight.declareAttack() + getBonusStats;
+
+                    double blockAttack = knight.blockAttack();
+
+                    double lifePoints = knight.calculateLifePoints();
+
+                    return new Knight( lifePoints, "Armor", "Sword", attackDeclaration, blockAttack, levelKnight, "idk",
+                            "idk", knightAbility );
+
                 } catch ( IllegalArgumentException error ) {
 
                     System.out.printf( "Error: %s", error.getMessage() );
@@ -86,6 +112,8 @@ public class KingdomApp {
             //    ValidateAbilities validateAbilities = new ValidateAbilities();
 
                 // Exceptions registered: IllegalArgumentException
+
+                ValidateAbilities validateAbilitiesPaladin = new ValidateAbilities();
 
                 ValidateStats validateStatsPaladin = new ValidateStats();
 
@@ -105,8 +133,53 @@ public class KingdomApp {
 
                     double divineStrike = validatePaladinAttributes.validateDivineStrike( init );
 
-                    Paladin paladin = new Paladin( 1000.0, "Armor", "Staff",
+                    Paladin paladin = new Paladin( 1000.0, "Armor", "Hammer",
                             attackPointsPaladin, defensePointsPaladin, levelPaladin, "idk", "idk", paladinAbility, divineStrike );
+
+                    if ( paladinAbility.equals( Abilities.valueOf ( "HEALING_BOOST" ) ) ) {
+
+                        double getBonusStats = validateAbilitiesPaladin.abilitiesPaladin( paladin );
+
+                        double attackDeclaration = paladin.declareAttack() + getBonusStats;
+
+                        double blockAttack = paladin.blockAttack();
+
+                        double lifePoints = paladin.calculateLifePoints();
+
+                        double getDivineStrike = paladin.getDivineStrike();
+
+                        return new Paladin( lifePoints, "Armor", "Hammer", attackDeclaration, blockAttack, levelPaladin,
+                                "idk", "idk", paladinAbility, getDivineStrike );
+
+                    }
+
+                    if ( paladinAbility.equals( Abilities.valueOf ( "DEFENSE_BOOST" ) ) ) {
+
+                        double getBonusStats = validateAbilitiesPaladin.abilitiesPaladin( paladin );
+
+                        double attackDeclaration = paladin.declareAttack();
+
+                        double blockAttack = paladin.blockAttack() + getBonusStats;
+
+                        double lifePoints = paladin.calculateLifePoints();
+
+                        double getDivineStrike = paladin.getDivineStrike();
+
+                        return new Paladin( lifePoints, "Armor", "Hammer", attackDeclaration, blockAttack, levelPaladin,
+                                "idk", "idk", paladinAbility, getDivineStrike );
+
+                    }
+
+                    double getDivineStrike = paladin.getDivineStrike();
+
+                    double attackDeclaration = paladin.declareAttack();
+
+                    double blockAttack = paladin.blockAttack();
+
+                    double lifePoints = paladin.calculateLifePoints();
+
+                    return new Paladin( lifePoints, "Armor", "Hammer", attackDeclaration, blockAttack, levelPaladin, "idk",
+                            "idk", paladinAbility, getDivineStrike );
 
                 } catch ( IllegalArgumentException error ) {
 
@@ -128,7 +201,7 @@ public class KingdomApp {
 
                 double defensePointsBarbarian = validateStatsBarbarian.defensePoints( init );
 
-                validateStatsBarbarian.validateAllMethods( levelBarbarian, attackPointsBarbarian, defensePointsBarbarian);
+                validateStatsBarbarian.validateAllMethods( levelBarbarian, attackPointsBarbarian, defensePointsBarbarian );
 
                 try {
 
@@ -186,6 +259,7 @@ public class KingdomApp {
 
         }
 
+        return null;
     }
 
 }
