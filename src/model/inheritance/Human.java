@@ -8,42 +8,17 @@ public abstract class Human {
 
     protected int level;
 
-    private String appearance;
-
-    private String feelings;
-
-    private int age;
-
     private String accessory;
 
     private Abilities specialAbility;
 
     public Human () {}
 
-    public Human ( String name, int level, String appearance, String feelings, int age, String accessory,
-                   Abilities specialAbility ) {
+    public Human ( String name, int level, String accessory, Abilities specialAbility ) {
 
         this.name = name;
 
         this.level = level;
-
-        this.appearance = appearance;
-
-        this.feelings = feelings;
-
-        this.age = age;
-
-        this.accessory = accessory;
-
-        this.specialAbility = specialAbility;
-
-    }
-
-    public Human ( int level, String appearance, String accessory, Abilities specialAbility ) {
-
-        this.level = level;
-
-        this.appearance = appearance;
 
         this.accessory = accessory;
 
@@ -63,17 +38,6 @@ public abstract class Human {
 
     }
 
-    public String getAppearance () {
-
-        return appearance;
-
-    }
-
-    public String getFeelings () {
-
-        return feelings;
-
-    }
 
     public String getAccessory () {
 
@@ -81,11 +45,6 @@ public abstract class Human {
 
     }
 
-    public int getAge () {
-
-        return age;
-
-    }
 
     public Abilities getSpecialAbility () {
 
@@ -101,9 +60,6 @@ public abstract class Human {
         sb = new StringBuilder();
 
         sb.append( "Level: " ).append( getLevel() )
-                .append( " Appearance: " ).append( getAppearance() )
-                .append( " Feelings: " ).append( getFeelings() )
-                .append( " Age: " ).append( getAge() )
                 .append( " Accessory: " ).append( getAccessory() )
                 .append( " Abilities: " ).append( getSpecialAbility() );
 

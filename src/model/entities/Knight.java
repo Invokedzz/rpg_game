@@ -25,26 +25,9 @@ public class Knight extends Human implements Attributes {
     public Knight () {}
 
     public Knight ( double lifePoints, String armor, String weapon, double attackPoints, double defensePoints, String name, int level,
-                    String appearance, String feelings, int age, String accessory, Abilities specialAbility ) { // constructor for knight class
+                    String accessory, Abilities specialAbility ) { // constructor for knight class
 
-        super ( name, level, appearance, feelings, age, accessory, specialAbility );
-
-        this.lifePoints = lifePoints;
-
-        this.armor = armor;
-
-        this.weapon = weapon;
-
-        this.attackPoints = attackPoints;
-
-        this.defensePoints = defensePoints;
-
-    }
-
-    public Knight ( double lifePoints, String armor, String weapon, double attackPoints, double defensePoints,
-                    int level, String appearance, String accessory, Abilities specialAbility ) { // constructor for other classes
-
-        super ( level, appearance, accessory, specialAbility);
+        super ( name, level, accessory, specialAbility );
 
         this.lifePoints = lifePoints;
 

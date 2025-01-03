@@ -17,12 +17,11 @@ public final class Paladin extends Knight {
     }
 
     public Paladin ( double lifePoints, String armor, String weapon, double attackPoints, double defensePoints,
-                     String name, int level, String appearance, String accessory, Abilities specialAbility, double divineStrike ) {
+                     String name, int level, String accessory, Abilities specialAbility, double divineStrike ) {
 
         // constructor for other classes
 
-        super ( lifePoints, armor, weapon, attackPoints, defensePoints, level, appearance, accessory,
-                specialAbility );
+        super ( lifePoints, armor, weapon, attackPoints, defensePoints, name, level, accessory, specialAbility );
 
         // thinking about methods/variables for the Paladin class
 
