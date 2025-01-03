@@ -37,6 +37,8 @@ public class KingdomApp {
 
             Knight playerTwo = createYourCharacter( playerTwoChoice, sc );
 
+            assert playerOne != null;
+
             startBattle( playerOne, playerTwo, sc );
 
     }
@@ -93,7 +95,7 @@ public class KingdomApp {
 
         int choice = sc.nextInt();
 
-        double damage = 0.0;
+        double damage;
 
         double healLifePoints = 0.0;
 
@@ -115,11 +117,13 @@ public class KingdomApp {
 
                     healLifePoints = turnPlayer.calculateLifePoints() + 30.0;
 
-                    System.out.printf( "You restored 30HP! Life Points: %s", healLifePoints );
-
                     potions--;
 
                 }
+
+                if ( potions == 0 ) System.out.println( "No potions left!" );
+
+                else System.out.printf( "You restored 30HP! Life Points: %s", healLifePoints );
 
                 break;
 
