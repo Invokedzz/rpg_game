@@ -27,7 +27,7 @@ public class KingdomApp {
 
             char playerOneChoice = init.next().charAt( 0 );
 
-            Knight firstCharacter = createYourCharacter( playerOneChoice, init );
+            Knight playerOne = createYourCharacter( playerOneChoice, init );
 
             System.out.println( "Player 2, choose your character!" );
 
@@ -35,8 +35,49 @@ public class KingdomApp {
 
             char playerTwoChoice = init.next().charAt( 0 );
 
-            Knight secondCharacter = createYourCharacter( playerTwoChoice, init );
+            Knight playerTwo = createYourCharacter( playerTwoChoice, init );
 
+            startBattle( playerOne, playerTwo );
+
+    }
+
+    private static void startBattle ( Knight playerOne, Knight playerTwo ) {
+
+        System.out.println( "Now, be prepared! The battle has begun!" );
+
+        int turns = 1;
+
+        while ( playerOne.isAlive() && playerTwo.isAlive() ) {
+
+            System.out.printf( "Turn %s\n", turns );
+
+            if ( turns % 2 == 0 ) {
+
+                System.out.println( "Player one turn!" );
+
+                determinePlayerTurn( playerOne, playerTwo );
+
+            }
+
+            if ( turns % 2 != 0 ) {
+
+                System.out.println( "Player two turn!" );
+
+                determinePlayerTurn( playerTwo, playerOne );
+
+            }
+
+            turns ++;
+
+        }
+
+        if ( playerOne.isAlive() ) System.out.println( "Player one wins!" );
+
+        else System.out.println( "Player two wins!" );
+
+    }
+
+    private static void determinePlayerTurn ( Knight turnPlayer, Knight Opponent ) {
 
     }
 
@@ -331,6 +372,7 @@ public class KingdomApp {
         }
 
         return null;
+
     }
 
 }
