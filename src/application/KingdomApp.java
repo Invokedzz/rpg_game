@@ -4,13 +4,7 @@ import java.util.Scanner;
 
 import model.entities.*;
 
-import model.inheritance.Human;
-
-import model.inheritance.abilities.ValidateAbilities;
-
-import model.inheritance.abilities.ValidateStats;
-
-import model.inheritance.abilities.ValidateUniqueAttributes;
+import model.inheritance.abilities.*;
 
 import model.inheritance.abilitiesenum.Abilities;
 
@@ -83,7 +77,7 @@ public class KingdomApp {
 
                         double lifePoints = knight.calculateLifePoints();
 
-                        return new Knight( lifePoints, "Armor", "Sword", attackDeclaration, blockAttack,
+                        return new Knight ( lifePoints, "Armor", "Sword", attackDeclaration, blockAttack,
                                 levelKnight, "idk", "idk", knightAbility );
 
                     }
@@ -96,7 +90,7 @@ public class KingdomApp {
 
                     double lifePoints = knight.calculateLifePoints();
 
-                    return new Knight( lifePoints, "Armor", "Sword", attackDeclaration, blockAttack, levelKnight, "idk",
+                    return new Knight ( lifePoints, "Armor", "Sword", attackDeclaration, blockAttack, levelKnight, "idk",
                             "idk", knightAbility );
 
                 } catch ( IllegalArgumentException error ) {
@@ -148,7 +142,7 @@ public class KingdomApp {
 
                         double getDivineStrike = paladin.getDivineStrike();
 
-                        return new Paladin( lifePoints, "Armor", "Hammer", attackDeclaration, blockAttack, levelPaladin,
+                        return new Paladin ( lifePoints, "Armor", "Hammer", attackDeclaration, blockAttack, levelPaladin,
                                 "idk", "idk", paladinAbility, getDivineStrike );
 
                     }
@@ -165,7 +159,7 @@ public class KingdomApp {
 
                         double getDivineStrike = paladin.getDivineStrike();
 
-                        return new Paladin( lifePoints, "Armor", "Hammer", attackDeclaration, blockAttack, levelPaladin,
+                        return new Paladin ( lifePoints, "Armor", "Hammer", attackDeclaration, blockAttack, levelPaladin,
                                 "idk", "idk", paladinAbility, getDivineStrike );
 
                     }
@@ -178,7 +172,7 @@ public class KingdomApp {
 
                     double lifePoints = paladin.calculateLifePoints();
 
-                    return new Paladin( lifePoints, "Armor", "Hammer", attackDeclaration, blockAttack, levelPaladin, "idk",
+                    return new Paladin ( lifePoints, "Armor", "Hammer", attackDeclaration, blockAttack, levelPaladin, "idk",
                             "idk", paladinAbility, getDivineStrike );
 
                 } catch ( IllegalArgumentException error ) {
@@ -211,7 +205,7 @@ public class KingdomApp {
 
                     double fury = validateBarbarianAttributes.validateFury( init );
 
-                    Barbarian barbarian = new Barbarian( 1000.0, "Armor", "Club",
+                    Barbarian barbarian = new Barbarian ( 1000.0, "Armor", "Club",
                             attackPointsBarbarian, defensePointsBarbarian, levelBarbarian, "idk", "idk", barbarianAbility, fury );
 
                     if ( barbarianAbility.equals( Abilities.valueOf ( "STRENGTH_BOOST" ) ) ) {
@@ -226,7 +220,7 @@ public class KingdomApp {
 
                         double getFury = barbarian.getFury();
 
-                        return new Barbarian( lifePoints, "Armor", "Club", attackDeclaration, blockAttack, levelBarbarian, "idk",
+                        return new Barbarian ( lifePoints, "Armor", "Club", attackDeclaration, blockAttack, levelBarbarian, "idk",
                                 "idk", barbarianAbility, getFury );
 
                     }
@@ -243,7 +237,7 @@ public class KingdomApp {
 
                         double lifePoints = barbarian.calculateLifePoints() + getFury;
 
-                        return new Barbarian( lifePoints, "Armor", "Club", attackDeclaration, blockAttack, levelBarbarian, "idk",
+                        return new Barbarian ( lifePoints, "Armor", "Club", attackDeclaration, blockAttack, levelBarbarian, "idk",
                                 "idk", barbarianAbility, getFury );
 
                     }
@@ -256,7 +250,7 @@ public class KingdomApp {
 
                     double lifePoints = barbarian.calculateLifePoints();
 
-                    return new Barbarian( lifePoints, "Armor", "Club", attackDeclaration, blockAttack, levelBarbarian, "idk",
+                    return new Barbarian ( lifePoints, "Armor", "Club", attackDeclaration, blockAttack, levelBarbarian, "idk",
                             "idk", barbarianAbility, getFury );
 
                 } catch ( IllegalArgumentException error ) {
@@ -268,6 +262,8 @@ public class KingdomApp {
                 break;
 
             case 'm' | 'M':
+
+                ValidateAbilities validateAbilitiesMage = new ValidateAbilities();
 
                 ValidateStats validateStatsMage = new ValidateStats();
 
@@ -289,6 +285,34 @@ public class KingdomApp {
 
                     Mage mage = new Mage( 1000.0, "Armor", "Staff",
                             attackPointsMage, defensePointsMage, levelMage, "idk", "idk", mageAbility, mana );
+
+                    if ( mageAbility.equals( Abilities.valueOf ( "MAGICAL_BOOST" ) ) ) {
+
+                        double getBonusStats = validateAbilitiesMage.abilitiesMage( mage );
+
+                        double attackDeclaration = mage.declareAttack() + getBonusStats;
+
+                        double blockAttack = mage.blockAttack();
+
+                        double lifePoints = mage.calculateLifePoints();
+
+                        double getMana = mage.getMana();
+
+                        return new Mage ( lifePoints, "Armor", "Staff", attackDeclaration, blockAttack, levelMage,
+                                "idk", "idk", mageAbility, getMana );
+
+                    }
+
+                    double getMana = mage.getMana();
+
+                    double attackDeclaration = mage.declareAttack();
+
+                    double blockAttack = mage.blockAttack();
+
+                    double lifePoints = mage.calculateLifePoints();
+
+                    return new Mage ( lifePoints, "Armor", "Staff", attackDeclaration, blockAttack, levelMage,
+                            "idk", "idk", mageAbility, getMana );
 
                 } catch ( IllegalArgumentException error ) {
 
