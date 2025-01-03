@@ -2,13 +2,9 @@ package model.entities;
 
 import model.inheritance.Human;
 
-import model.inheritance.abilities.ValidateAbilities;
-
 import model.inheritance.abilitiesenum.Abilities;
 
-import model.inheritance.abilities.ValidateStats;
-
-public class Knight extends Human {
+public class Knight extends Human implements Attributes {
 
     // armor ( String ), weapon ( String ),
     // attackPoints ( double ), defensePoints ( double )

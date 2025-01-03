@@ -4,9 +4,6 @@ import model.inheritance.abilitiesenum.Abilities;
 
 public abstract class Human {
 
-    // feelings ( String ), appearance ( String )
-    // age ( int ), accessory ( String ), specialAbility ( String )
-
     protected int level;
 
     private String appearance;
@@ -56,6 +53,30 @@ public abstract class Human {
 
     }
 
+    public String getAppearance () {
+
+        return appearance;
+
+    }
+
+    public String getFeelings () {
+
+        return feelings;
+
+    }
+
+    public String getAccessory () {
+
+        return accessory;
+
+    }
+
+    public int getAge () {
+
+        return age;
+
+    }
+
     public Abilities getSpecialAbility () {
 
         return specialAbility;
@@ -69,12 +90,12 @@ public abstract class Human {
 
         sb = new StringBuilder();
 
-        sb.append( "Level: " ).append( level )
-                .append( " Appearance: " ).append( appearance )
-                .append( " Feelings: " ).append( feelings )
-                .append( " Age: " ).append( age )
-                .append( " Accessory: " ).append( accessory )
-                .append( " Abilities: " ).append( specialAbility );
+        sb.append( "Level: " ).append( getLevel() )
+                .append( " Appearance: " ).append( getAppearance() )
+                .append( " Feelings: " ).append( getFeelings() )
+                .append( " Age: " ).append( getAge() )
+                .append( " Accessory: " ).append( getAccessory() )
+                .append( " Abilities: " ).append( getSpecialAbility() );
 
         return sb.toString();
 

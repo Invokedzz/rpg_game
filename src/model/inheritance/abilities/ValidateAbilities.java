@@ -1,14 +1,14 @@
 package model.inheritance.abilities;
 
-// MAGICAL_BOOST, STRENGTH_BOOST, WRATH_BOOST,
-
-// DEFENSE_BOOST, HEALING_BOOST
-
 import model.entities.*;
 
 import model.exceptions.InvalidAbilityException;
 
 import model.inheritance.abilitiesenum.Abilities;
+
+// MAGICAL_BOOST, STRENGTH_BOOST, WRATH_BOOST,
+
+// DEFENSE_BOOST, HEALING_BOOST
 
 public final class ValidateAbilities {
 
