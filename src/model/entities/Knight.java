@@ -101,6 +101,14 @@ public class Knight extends Human implements Attributes {
 
     }
 
+    public double takeDamage ( double damage ) {
+
+        this.lifePoints -= damage;
+
+        return this.lifePoints;
+
+    }
+
     @Override
     public String toString () {
 

@@ -77,7 +77,7 @@ public class KingdomApp {
 
     }
 
-    private static void determinePlayerTurn ( Knight turnPlayer, Knight Opponent, Scanner sc ) {
+    private static void determinePlayerTurn ( Knight turnPlayer, Knight opponent, Scanner sc ) {
 
         // System.out.println( turnPlayer );
 
@@ -87,7 +87,7 @@ public class KingdomApp {
 
         System.out.println( "1. Attack" );
 
-        System.out.println( "2. Guard" );
+        System.out.println( "2. Heal" );
 
         System.out.println( "3. Run" );
 
@@ -95,13 +95,45 @@ public class KingdomApp {
 
         double damage = 0.0;
 
+        double healLifePoints = 0.0;
+
         switch ( choice ) {
 
-            case 1:
+            case 1: // attack
 
                 damage = turnPlayer.declareAttack();
 
+                opponent.takeDamage( damage );
 
+                break;
+
+            case 2: // heal
+
+                int potions = 3;
+
+                while ( potions > 0 ) {
+
+                    healLifePoints = turnPlayer.calculateLifePoints() + 30.0;
+
+                    System.out.printf( "You restored 30HP! Life Points: %s", healLifePoints );
+
+                    potions--;
+
+                }
+
+                break;
+
+            case 3: // run (surrender)
+
+                turnPlayer.takeDamage( 9999 );
+
+                return;
+
+            default:
+
+                System.out.println( "Invalid choice, dummy!" );
+
+                determinePlayerTurn( turnPlayer, opponent, sc );
 
         }
 

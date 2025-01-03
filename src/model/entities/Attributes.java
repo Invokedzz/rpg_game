@@ -10,4 +10,6 @@ public interface Attributes {
 
     boolean isAlive ();
 
+    double takeDamage ( double damage );
+
 }
