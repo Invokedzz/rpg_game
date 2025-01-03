@@ -24,10 +24,10 @@ public class Knight extends Human implements Attributes {
 
     public Knight () {}
 
-    public Knight ( double lifePoints, String armor, String weapon, double attackPoints, double defensePoints, int level,
+    public Knight ( double lifePoints, String armor, String weapon, double attackPoints, double defensePoints, String name, int level,
                     String appearance, String feelings, int age, String accessory, Abilities specialAbility ) { // constructor for knight class
 
-        super ( level, appearance, feelings, age, accessory, specialAbility );
+        super ( name, level, appearance, feelings, age, accessory, specialAbility );
 
         this.lifePoints = lifePoints;
 
@@ -111,17 +111,10 @@ public class Knight extends Human implements Attributes {
 
     }
 
-    public double resolveAttackImpact () {
-
-        // double lifePoints = calculateLifePoints();
-
-        return declareAttack() - blockAttack();
-
-    }
 
     public boolean isAlive () {
 
-        return resolveAttackImpact () > 0;
+        return calculateLifePoints () > 0;
 
     }
 

@@ -8,8 +8,6 @@ public interface Attributes {
 
     double calculateLifePoints ();
 
-    double resolveAttackImpact ();
-
     boolean isAlive ();
 
 }

@@ -4,6 +4,8 @@ import model.inheritance.abilitiesenum.Abilities;
 
 public abstract class Human {
 
+    protected String name;
+
     protected int level;
 
     private String appearance;
@@ -18,8 +20,10 @@ public abstract class Human {
 
     public Human () {}
 
-    public Human ( int level, String appearance, String feelings, int age, String accessory,
+    public Human ( String name, int level, String appearance, String feelings, int age, String accessory,
                    Abilities specialAbility ) {
+
+        this.name = name;
 
         this.level = level;
 
@@ -44,6 +48,12 @@ public abstract class Human {
         this.accessory = accessory;
 
         this.specialAbility = specialAbility;
+
+    }
+
+    public String getName () {
+
+        return name;
 
     }
 

@@ -17,7 +17,7 @@ public final class Mage extends Knight {
     }
 
     public Mage ( double lifePoints, String armor, String weapon, double attackPoints, double defensePoints,
-                  int level, String appearance, String accessory, Abilities specialAbility, double mana ) {
+                  String name, int level, String appearance, String accessory, Abilities specialAbility, double mana ) {
 
         // constructor for other classes
 

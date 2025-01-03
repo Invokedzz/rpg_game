@@ -12,36 +12,36 @@ public class KingdomApp {
 
     public static void main ( String[] args ) {
 
-        Scanner init = new Scanner ( System.in );
+        Scanner sc = new Scanner ( System.in );
 
-        chooseYourCharacter( init );
+        chooseYourCharacter( sc );
 
     }
 
-    private static void chooseYourCharacter ( Scanner init ) {
+    private static void chooseYourCharacter ( Scanner sc ) {
 
 
             System.out.println( "Player 1, choose your character!" );
 
             System.out.println( "Select k for Knight, m for Mage, b for Barbarian or p for Paladin! " );
 
-            char playerOneChoice = init.next().charAt( 0 );
+            char playerOneChoice = sc.next().charAt( 0 );
 
-            Knight playerOne = createYourCharacter( playerOneChoice, init );
+            Knight playerOne = createYourCharacter( playerOneChoice, sc );
 
             System.out.println( "Player 2, choose your character!" );
 
             System.out.println( "Select k for Knight, m for Mage, b for Barbarian or p for Paladin! " );
 
-            char playerTwoChoice = init.next().charAt( 0 );
+            char playerTwoChoice = sc.next().charAt( 0 );
 
-            Knight playerTwo = createYourCharacter( playerTwoChoice, init );
+            Knight playerTwo = createYourCharacter( playerTwoChoice, sc );
 
-            startBattle( playerOne, playerTwo );
+            startBattle( playerOne, playerTwo, sc );
 
     }
 
-    private static void startBattle ( Knight playerOne, Knight playerTwo ) {
+    private static void startBattle ( Knight playerOne, Knight playerTwo, Scanner sc ) {
 
         System.out.println( "Now, be prepared! The battle has begun!" );
 
@@ -55,7 +55,7 @@ public class KingdomApp {
 
                 System.out.println( "Player one turn!" );
 
-                determinePlayerTurn( playerOne, playerTwo );
+                determinePlayerTurn( playerOne, playerTwo, sc );
 
             }
 
@@ -63,7 +63,7 @@ public class KingdomApp {
 
                 System.out.println( "Player two turn!" );
 
-                determinePlayerTurn( playerTwo, playerOne );
+                determinePlayerTurn( playerTwo, playerOne, sc );
 
             }
 
@@ -77,11 +77,37 @@ public class KingdomApp {
 
     }
 
-    private static void determinePlayerTurn ( Knight turnPlayer, Knight Opponent ) {
+    private static void determinePlayerTurn ( Knight turnPlayer, Knight Opponent, Scanner sc ) {
+
+        // System.out.println( turnPlayer );
+
+        // System.out.println( Opponent );
+
+        System.out.println( "Choose your action!\n" );
+
+        System.out.println( "1. Attack" );
+
+        System.out.println( "2. Guard" );
+
+        System.out.println( "3. Run" );
+
+        int choice = sc.nextInt();
+
+        double damage = 0.0;
+
+        switch ( choice ) {
+
+            case 1:
+
+                damage = turnPlayer.declareAttack();
+
+
+
+        }
 
     }
 
-    private static Knight createYourCharacter ( char playerChoice, Scanner init ) {
+    private static Knight createYourCharacter ( char playerChoice, Scanner sc ) {
 
         switch ( playerChoice ) {
 
@@ -89,21 +115,25 @@ public class KingdomApp {
 
                 ValidateAbilities validateAbilitiesKnight = new ValidateAbilities();
 
+                CharacterName characterNameKnight = new CharacterName();
+
                 // Exceptions registered: IllegalArgumentException
 
                 ValidateStats validateStatsKnight = new ValidateStats();
 
-                int levelKnight = validateStatsKnight.levelValidation( init );
+                String knightName = characterNameKnight.validateName( sc );
 
-                double attackPointsKnight = validateStatsKnight.attackValidation( init );
+                int levelKnight = validateStatsKnight.levelValidation( sc );
 
-                double defensePointsKnight = validateStatsKnight.defensePoints( init );
+                double attackPointsKnight = validateStatsKnight.attackValidation( sc );
+
+                double defensePointsKnight = validateStatsKnight.defensePoints( sc );
 
                 validateStatsKnight.validateAllMethods( levelKnight, attackPointsKnight, defensePointsKnight );
 
                 try {
 
-                    Abilities knightAbility = Abilities.valueOf ( init.next() );
+                    Abilities knightAbility = Abilities.valueOf ( sc.next() );
 
                     Knight knight = new Knight( 1000.0, "Armor", "Sword", attackPointsKnight,
                             defensePointsKnight, levelKnight, "idk", "idk", knightAbility );
@@ -144,32 +174,35 @@ public class KingdomApp {
 
             case 'p' | 'P':
 
-            //    ValidateAbilities validateAbilities = new ValidateAbilities();
-
                 // Exceptions registered: IllegalArgumentException
 
                 ValidateAbilities validateAbilitiesPaladin = new ValidateAbilities();
+
+                CharacterName characterNamePaladin = new CharacterName();
 
                 ValidateStats validateStatsPaladin = new ValidateStats();
 
                 ValidateUniqueAttributes validatePaladinAttributes = new ValidateUniqueAttributes();
 
-                int levelPaladin = validateStatsPaladin.levelValidation( init );
+                String paladinName = characterNamePaladin.validateName( sc );
 
-                double attackPointsPaladin = validateStatsPaladin.attackValidation( init );
+                int levelPaladin = validateStatsPaladin.levelValidation( sc );
 
-                double defensePointsPaladin = validateStatsPaladin.defensePoints( init );
+                double attackPointsPaladin = validateStatsPaladin.attackValidation( sc );
+
+                double defensePointsPaladin = validateStatsPaladin.defensePoints( sc );
 
                 validateStatsPaladin.validateAllMethods( levelPaladin, attackPointsPaladin, defensePointsPaladin);
 
                 try {
 
-                    Abilities paladinAbility = Abilities.valueOf ( init.next() );
+                    Abilities paladinAbility = Abilities.valueOf ( sc.next() );
 
-                    double divineStrike = validatePaladinAttributes.validateDivineStrike( init );
+                    double divineStrike = validatePaladinAttributes.validateDivineStrike( sc );
 
                     Paladin paladin = new Paladin( 1000.0, "Armor", "Hammer",
-                            attackPointsPaladin, defensePointsPaladin, levelPaladin, "idk", "idk", paladinAbility, divineStrike );
+                            attackPointsPaladin, defensePointsPaladin, paladinName,
+                            levelPaladin, "idk", "idk", paladinAbility, divineStrike );
 
                     if ( paladinAbility.equals( Abilities.valueOf ( "HEALING_BOOST" ) ) ) {
 
@@ -232,19 +265,19 @@ public class KingdomApp {
 
                 ValidateUniqueAttributes validateBarbarianAttributes = new ValidateUniqueAttributes();
 
-                int levelBarbarian = validateStatsBarbarian.levelValidation( init );
+                int levelBarbarian = validateStatsBarbarian.levelValidation( sc );
 
-                double attackPointsBarbarian = validateStatsBarbarian.attackValidation( init );
+                double attackPointsBarbarian = validateStatsBarbarian.attackValidation( sc );
 
-                double defensePointsBarbarian = validateStatsBarbarian.defensePoints( init );
+                double defensePointsBarbarian = validateStatsBarbarian.defensePoints( sc );
 
                 validateStatsBarbarian.validateAllMethods( levelBarbarian, attackPointsBarbarian, defensePointsBarbarian );
 
                 try {
 
-                    Abilities barbarianAbility = Abilities.valueOf ( init.next() );
+                    Abilities barbarianAbility = Abilities.valueOf ( sc.next() );
 
-                    double fury = validateBarbarianAttributes.validateFury( init );
+                    double fury = validateBarbarianAttributes.validateFury( sc );
 
                     Barbarian barbarian = new Barbarian ( 1000.0, "Armor", "Club",
                             attackPointsBarbarian, defensePointsBarbarian, levelBarbarian, "idk", "idk", barbarianAbility, fury );
@@ -310,19 +343,19 @@ public class KingdomApp {
 
                 ValidateUniqueAttributes validateMageAttributes = new ValidateUniqueAttributes();
 
-                int levelMage = validateStatsMage.levelValidation( init );
+                int levelMage = validateStatsMage.levelValidation( sc );
 
-                double attackPointsMage = validateStatsMage.attackValidation( init );
+                double attackPointsMage = validateStatsMage.attackValidation( sc );
 
-                double defensePointsMage = validateStatsMage.defensePoints( init );
+                double defensePointsMage = validateStatsMage.defensePoints( sc );
 
                 validateStatsMage.validateAllMethods( levelMage, attackPointsMage, defensePointsMage);
 
                 try {
 
-                    Abilities mageAbility = Abilities.valueOf ( init.next() );
+                    Abilities mageAbility = Abilities.valueOf ( sc.next() );
 
-                    double mana = validateMageAttributes.validateMana( init );
+                    double mana = validateMageAttributes.validateMana( sc );
 
                     Mage mage = new Mage( 1000.0, "Armor", "Staff",
                             attackPointsMage, defensePointsMage, levelMage, "idk", "idk", mageAbility, mana );
