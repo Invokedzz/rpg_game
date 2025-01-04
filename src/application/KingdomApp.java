@@ -81,9 +81,9 @@ public class KingdomApp {
 
     private static void determinePlayerTurn ( Knight turnPlayer, Knight opponent, Scanner sc ) {
 
-        // System.out.println( turnPlayer );
+         System.out.printf( "%s turn!", turnPlayer.getName() );
 
-        // System.out.println( Opponent );
+         System.out.printf( "%s waits for the move...", opponent.getName() );
 
         System.out.println( "Choose your action!\n" );
 
@@ -111,19 +111,7 @@ public class KingdomApp {
 
             case 2: // heal
 
-                int potions = 3;
-
-                while ( potions > 0 ) {
-
-                    healLifePoints = turnPlayer.calculateLifePoints() + 30.0;
-
-                    potions--;
-
-                }
-
-                if ( potions == 0 ) System.out.println( "No potions left!" );
-
-                else System.out.printf( "You restored 30HP! Life Points: %s", healLifePoints );
+                // 3 potions for each player
 
                 break;
 

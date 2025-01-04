@@ -22,6 +22,8 @@ public class Knight extends Human implements Attributes {
 
     protected double defensePoints;
 
+    private int potionsQuantity;
+
     public Knight () {}
 
     public Knight ( double lifePoints, String armor, String weapon, double attackPoints, double defensePoints, String name, int level,
@@ -106,6 +108,16 @@ public class Knight extends Human implements Attributes {
         this.lifePoints -= damage;
 
         return this.lifePoints;
+
+    }
+
+    public int usePotions ( int quantity ) {
+
+        this.potionsQuantity = 3;
+
+        this.potionsQuantity -= quantity;
+
+        return this.potionsQuantity;
 
     }
 

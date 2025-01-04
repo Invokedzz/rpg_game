@@ -12,4 +12,6 @@ public interface Attributes {
 
     double takeDamage ( double damage );
 
+    int usePotions ( int quantity );
+
 }
