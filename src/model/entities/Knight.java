@@ -117,7 +117,25 @@ public class Knight extends Human implements Attributes {
 
         this.potionsQuantity -= quantity;
 
+        if ( this.potionsQuantity <= 0 ) {
+
+            System.out.println( "You're out of potions!" );
+
+            return 0;
+
+        }
+
+        System.out.printf("30 HP was healed! %s HP is now %s", getName(), healPlayer() );
+
         return this.potionsQuantity;
+
+    }
+
+    public double healPlayer () {
+
+        this.lifePoints += 30;
+
+        return this.lifePoints;
 
     }
 
