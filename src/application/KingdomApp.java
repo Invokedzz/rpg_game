@@ -20,7 +20,6 @@ public class KingdomApp {
 
     private static void chooseYourCharacter ( Scanner sc ) {
 
-
             System.out.println( "Player 1, choose your character!" );
 
             System.out.println( "Select k for Knight, m for Mage, b for Barbarian or p for Paladin! " );
@@ -45,7 +44,7 @@ public class KingdomApp {
 
     private static void startBattle ( Knight playerOne, Knight playerTwo, Scanner sc ) {
 
-        System.out.println( "Now, be prepared! The battle has begun!" );
+        System.out.println( "Now, be prepared! The battle has begun!\n" );
 
         int turns = 1;
 
@@ -55,7 +54,7 @@ public class KingdomApp {
 
             if ( turns % 2 == 0 ) {
 
-                System.out.println( "Player one turn!" );
+                System.out.println( "Player one turn!\n" );
 
                 determinePlayerTurn( playerOne, playerTwo, sc );
 
@@ -63,7 +62,7 @@ public class KingdomApp {
 
             if ( turns % 2 != 0 ) {
 
-                System.out.println( "Player two turn!" );
+                System.out.println( "Player two turn!\n" );
 
                 determinePlayerTurn( playerTwo, playerOne, sc );
 
@@ -81,9 +80,11 @@ public class KingdomApp {
 
     private static void determinePlayerTurn ( Knight turnPlayer, Knight opponent, Scanner sc ) {
 
+         System.out.println();
+
          System.out.printf( "%s turn!", turnPlayer.getName() );
 
-         System.out.printf( "%s waits for the move...", opponent.getName() );
+         System.out.printf( " %s waits for the move...", opponent.getName() );
 
         System.out.println( "Choose your action!\n" );
 
@@ -105,7 +106,13 @@ public class KingdomApp {
 
                 damage = turnPlayer.declareAttack();
 
-                opponent.takeDamage( damage );
+                System.out.println();
+
+                System.out.printf( "%s declares a powerful attack, that deals %s damage!\n", turnPlayer.getName(), damage );
+
+                double opponentTakenDamageOutput = opponent.takeDamage( damage );
+
+                System.out.printf( "The attack was brutal! %s have %s life points remaining!\n", opponent.getName(), opponentTakenDamageOutput );
 
                 break;
 
@@ -115,11 +122,15 @@ public class KingdomApp {
 
                 int potionsQuantity = turnPlayer.usePotions( 1 );
 
-                System.out.printf( "You have %s potions left!", potionsQuantity );
+                System.out.printf( "You have %s potions left!\n", potionsQuantity );
 
                 break;
 
             case 3: // run (surrender)
+
+                System.out.println();
+
+                System.out.println( turnPlayer.getName() + " runs from the battle! Coward!\n" );
 
                 turnPlayer.takeDamage( 9999 );
 

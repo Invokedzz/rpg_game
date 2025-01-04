@@ -65,6 +65,18 @@ public class Knight extends Human implements Attributes {
 
     }
 
+    public String getArmor () {
+
+        return armor;
+
+    }
+
+    public String getWeapon () {
+
+        return weapon;
+
+    }
+
     // Battle methods
     // declareAttack, blockAttack, calculateLifePoints, resolveAttackImpact & isAlive
 
@@ -121,11 +133,15 @@ public class Knight extends Human implements Attributes {
 
             System.out.println( "You're out of potions!" );
 
+            System.out.println();
+
             return 0;
 
         }
 
-        System.out.printf("30 HP was healed! %s HP is now %s", getName(), healPlayer() );
+        System.out.printf("30 HP was healed! %s HP is now %s ", getName(), healPlayer() );
+
+        System.out.println();
 
         return this.potionsQuantity;
 
@@ -146,10 +162,11 @@ public class Knight extends Human implements Attributes {
 
         sb = new StringBuilder();
 
-        sb.append( "Armor: " ).append( armor )
-                .append( ", Weapon: " ).append( weapon )
-                .append( ", Attack Points: " ).append( attackPoints )
-                .append( ", Defense Points: " ).append( defensePoints )
+        sb.append( "Name: " ).append( getName() )
+                .append( " Armor: " ).append( getArmor() )
+                .append( ", Weapon: " ).append( getWeapon() )
+                .append( ", Attack Points: " ).append( getAttackPoints() )
+                .append( ", Defense Points: " ).append( getDefensePoints() )
                 .append( " Special Ability: " ).append( getSpecialAbility() );
 
         return sb.toString();
