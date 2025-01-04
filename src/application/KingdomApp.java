@@ -113,7 +113,7 @@ public class KingdomApp {
 
                 // 3 potions for each player
 
-                int potionsQuantity = turnPlayer.usePotions( 3 );
+                int potionsQuantity = turnPlayer.usePotions( 1 );
 
                 System.out.printf( "You have %s potions left!", potionsQuantity );
 
