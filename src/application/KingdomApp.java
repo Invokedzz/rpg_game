@@ -50,6 +50,8 @@ public class KingdomApp {
 
         while ( playerOne.isAlive() && playerTwo.isAlive() ) {
 
+            System.out.println();
+
             System.out.printf( "Turn %s\n", turns );
 
             if ( turns % 2 == 0 ) {
@@ -98,8 +100,6 @@ public class KingdomApp {
 
         double damage;
 
-        double healLifePoints = 0.0;
-
         switch ( choice ) {
 
             case 1: // attack
@@ -119,6 +119,8 @@ public class KingdomApp {
             case 2: // heal
 
                 // 3 potions for each player
+
+                // I need to fix this shit
 
                 int potionsQuantity = turnPlayer.usePotions( 1 );
 

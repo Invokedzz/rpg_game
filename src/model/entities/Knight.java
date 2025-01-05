@@ -22,7 +22,7 @@ public class Knight extends Human implements Attributes {
 
     protected double defensePoints;
 
-    private int potionsQuantity;
+    private int potionsQuantity = 3;
 
     public Knight () {}
 
@@ -125,13 +125,11 @@ public class Knight extends Human implements Attributes {
 
     public int usePotions ( int quantity ) {
 
-        this.potionsQuantity = 3;
-
         this.potionsQuantity -= quantity;
 
         if ( this.potionsQuantity <= 0 ) {
 
-            System.out.println( "You're out of potions!" );
+            System.out.println( "You ran out of potions!" );
 
             System.out.println();
 
