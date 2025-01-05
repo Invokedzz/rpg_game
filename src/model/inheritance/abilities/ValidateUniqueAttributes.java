@@ -6,9 +6,9 @@ import java.util.Scanner;
 
 public final class ValidateUniqueAttributes {
 
-    private boolean hasDouble ( Scanner init ) {
+    private boolean trueDoubleComponent ( Scanner init ) {
 
-        return init.hasNextDouble();
+        return !init.hasNextDouble();
 
     }
 
@@ -18,7 +18,7 @@ public final class ValidateUniqueAttributes {
 
         System.out.println( "Enter the value for Fury stats (max: 100/min: 1)" );
 
-        while ( !hasDouble ( furyPoints ) ) {
+        while (trueDoubleComponent(furyPoints)) {
 
             System.out.println( "Enter a valid number for Fury stat!" );
 
@@ -32,7 +32,7 @@ public final class ValidateUniqueAttributes {
 
             System.out.println( "Enter a valid Fury value! (max: 100/min: 1)" );
 
-            while ( !hasDouble( furyPoints ) ) {
+            while (trueDoubleComponent(furyPoints)) {
 
                 System.out.println( "Enter a double number for Fury stat!" );
 
@@ -54,7 +54,7 @@ public final class ValidateUniqueAttributes {
 
         System.out.println( "Enter the value for Mana stats (max: 100/min: 1)" );
 
-        while ( !hasDouble ( manaPoints ) ) {
+        while (trueDoubleComponent(manaPoints)) {
 
             System.out.println( "Enter a valid number for Mana stat!" );
 
@@ -68,7 +68,7 @@ public final class ValidateUniqueAttributes {
 
             System.out.println( "Enter a valid Mana value! (max: 100/min: 1)" );
 
-            while ( !hasDouble( manaPoints ) ) {
+            while (trueDoubleComponent(manaPoints)) {
 
                 System.out.println( "Enter a double number for Mana stat!" );
 
@@ -90,7 +90,7 @@ public final class ValidateUniqueAttributes {
 
         System.out.println( "Enter the value for Divine Strike stat (max: 100/min: 1)" );
 
-        while ( !hasDouble ( divineStrikePoints ) ) {
+        while (trueDoubleComponent(divineStrikePoints)) {
 
             System.out.println( "Enter a valid number for Divine Strike stat!" );
 
@@ -104,7 +104,7 @@ public final class ValidateUniqueAttributes {
 
             System.out.println( "Enter a valid Divine Strike value! (max: 100/min: 1)" );
 
-            while ( !hasDouble( divineStrikePoints ) ) {
+            while (trueDoubleComponent(divineStrikePoints)) {
 
                 System.out.println( "Enter a double number for Divine Strike stat!" );
 

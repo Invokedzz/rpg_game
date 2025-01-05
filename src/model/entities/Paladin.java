@@ -70,10 +70,4 @@ public final class Paladin extends Knight {
 
     }
 
-    public double heal () {
-
-        return calculateLifePoints() + getDivineStrike();
-
-    }
-
 }

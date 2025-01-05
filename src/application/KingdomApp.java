@@ -10,7 +10,7 @@ import model.inheritance.abilitiesenum.Abilities;
 
 public class KingdomApp {
 
-    public static void main ( String[] args ) {
+    public static void initSystem () {
 
         Scanner sc = new Scanner ( System.in );
 
@@ -194,9 +194,23 @@ public class KingdomApp {
 
                     }
 
-                    double getBonusStats = validateAbilitiesKnight.abilitiesKnight( knight );
+                    if ( knightAbility.equals( Abilities.valueOf( "STRENGTH_BOOST" ) ) ) {
 
-                    double attackDeclaration = knight.declareAttack() + getBonusStats;
+                        double getBonusStats = validateAbilitiesKnight.abilitiesKnight( knight );
+
+                        double attackDeclaration = knight.declareAttack() + getBonusStats;
+
+                        double blockAttack = knight.blockAttack();
+
+                        double lifePoints = knight.calculateLifePoints();
+
+                        return new Knight ( lifePoints, "Armor", "Sword",
+                                attackDeclaration, blockAttack, knightName, levelKnight,
+                                "idk", knightAbility );
+
+                    }
+
+                    double attackDeclaration = knight.declareAttack();
 
                     double blockAttack = knight.blockAttack();
 
@@ -237,6 +251,8 @@ public class KingdomApp {
                 validateStatsPaladin.validateAllMethods( levelPaladin, attackPointsPaladin, defensePointsPaladin);
 
                 try {
+
+                    System.out.println( "Enter the Paladin Ability! (HEALING_BOOST, DEFENSE_BOOST or NONE" );
 
                     Abilities paladinAbility = Abilities.valueOf ( sc.next() );
 
@@ -324,6 +340,8 @@ public class KingdomApp {
 
                 try {
 
+                    System.out.println( "Enter the Barbarian Ability! (STRENGTH_BOOST, WRATH_BOOST or NONE)" );
+
                     Abilities barbarianAbility = Abilities.valueOf ( sc.next() );
 
                     double fury = validateBarbarianAttributes.validateFury( sc );
@@ -409,6 +427,8 @@ public class KingdomApp {
                 validateStatsMage.validateAllMethods( levelMage, attackPointsMage, defensePointsMage);
 
                 try {
+
+                    System.out.println( "Enter the Mage Ability (MAGICAL_BOOST or NONE)" );
 
                     Abilities mageAbility = Abilities.valueOf ( sc.next() );
 

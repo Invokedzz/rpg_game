@@ -13,15 +13,15 @@ public final class ValidateStats {
     // without considering any kind of boosts or abilities
     // level limit: 100
 
-    private boolean hasInt ( Scanner init ) {
+    private boolean trueIntComponent (Scanner init ) {
 
-        return init.hasNextInt();
+        return !init.hasNextInt();
 
     }
 
-    private boolean hasDouble ( Scanner init ) {
+    private boolean trueDoubleComponent(Scanner init ) {
 
-        return init.hasNextDouble();
+        return !init.hasNextDouble();
 
     }
 
@@ -31,7 +31,7 @@ public final class ValidateStats {
 
         System.out.println( "Enter your character level, REMEMBER: atk, def and lvl must be equals!" );
 
-        while ( !hasInt ( level ) ) {
+        while ( trueIntComponent( level ) ) {
 
             System.out.println( "Enter a valid level!" );
 
@@ -45,7 +45,7 @@ public final class ValidateStats {
 
             System.out.println( "Enter a valid level! (max: 100/min: 1)" );
 
-            while ( !hasInt ( level ) ) {
+            while ( trueIntComponent( level ) ) {
 
                 System.out.println( "Enter a valid level! (max: 100/min: 1)" );
 
@@ -69,7 +69,7 @@ public final class ValidateStats {
 
         System.out.println("REMEMBER, atk, def and lvl must be equals!");
 
-        while ( !hasDouble ( attackPoints ) ) {
+        while ( trueDoubleComponent( attackPoints ) ) {
 
             System.out.println( "Enter valid attack points!" );
 
@@ -83,7 +83,7 @@ public final class ValidateStats {
 
             System.out.println( "Enter valid attack points (max: 100/min: 5)" );
 
-            while ( !hasDouble ( attackPoints ) ) {
+            while ( trueDoubleComponent( attackPoints ) ) {
 
                 System.out.println( "Enter valid attack points!" );
 
@@ -107,7 +107,7 @@ public final class ValidateStats {
 
         System.out.println("REMEMBER, atk, def and lvl must be equals!");
 
-        while ( !hasDouble ( defensePoints ) ) {
+        while ( trueDoubleComponent( defensePoints ) ) {
 
             System.out.println( "Enter valid defense points!" );
 
@@ -121,7 +121,7 @@ public final class ValidateStats {
 
             System.out.println( "Enter valid defense points! (max: 100/min: 1)" );
 
-            while ( !hasDouble ( defensePoints ) ) {
+            while ( trueDoubleComponent( defensePoints ) ) {
 
                 System.out.println( "Enter valid defense points!" );
 

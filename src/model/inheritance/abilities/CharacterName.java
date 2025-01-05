@@ -12,7 +12,7 @@ public class CharacterName {
 
         name = sc.next();
 
-        while ( !name.matches("^[a-zA-Z]+$")) {
+        while ( !name.matches("^[a-zA-Z]+$" ) ) {
 
             System.out.println( "Enter a valid name for your character!" );
 
