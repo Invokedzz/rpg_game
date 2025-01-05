@@ -152,7 +152,7 @@ public class KingdomApp {
 
         switch ( playerChoice ) {
 
-            case 'k' | 'K':
+            case 'k', 'K':
 
                 ValidateAbilities validateAbilitiesKnight = new ValidateAbilities();
 
@@ -228,7 +228,7 @@ public class KingdomApp {
 
                 break;
 
-            case 'p' | 'P':
+            case 'p', 'P':
 
                 // Exceptions registered: IllegalArgumentException
 
@@ -318,7 +318,7 @@ public class KingdomApp {
 
                 break;
 
-            case 'b' | 'B':
+            case 'b', 'B':
 
                 ValidateAbilities validateAbilitiesBarbarian = new ValidateAbilities();
 
@@ -406,7 +406,7 @@ public class KingdomApp {
 
                 break;
 
-            case 'm' | 'M':
+            case 'm', 'M':
 
                 ValidateAbilities validateAbilitiesMage = new ValidateAbilities();
 
