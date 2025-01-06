@@ -1,5 +1,6 @@
 package application;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import model.entities.*;
@@ -37,6 +38,8 @@ public class KingdomApp {
             Knight playerTwo = createYourCharacter( playerTwoChoice, sc );
 
             assert playerOne != null;
+
+            clearConsole();
 
             startBattle( playerOne, playerTwo, sc );
 
@@ -485,6 +488,27 @@ public class KingdomApp {
         }
 
         return null;
+
+    }
+
+    private static void clearConsole () {
+
+        try {
+
+            ProcessBuilder processBuilder = new ProcessBuilder( "clear" );
+
+            processBuilder.inheritIO();
+
+            processBuilder.start().waitFor();
+
+        } catch ( IOException | InterruptedException exception ) {
+
+            System.out.printf( "Error: %s", exception.getMessage() );
+
+        }
+
+        //  Note:
+        //In the reference implementation, logging of the created process can be enabled, see ProcessBuilder. start() for details.
 
     }
 
