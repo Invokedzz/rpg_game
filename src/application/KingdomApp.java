@@ -29,6 +29,8 @@ public class KingdomApp {
 
             Knight playerOne = createYourCharacter( playerOneChoice, sc );
 
+            clearConsole();
+
             System.out.println( "Player 2, choose your character!" );
 
             System.out.println( "Select k for Knight, m for Mage, b for Barbarian or p for Paladin! " );
@@ -37,9 +39,9 @@ public class KingdomApp {
 
             Knight playerTwo = createYourCharacter( playerTwoChoice, sc );
 
-            assert playerOne != null;
-
             clearConsole();
+
+            assert playerOne != null;
 
             startBattle( playerOne, playerTwo, sc );
 
@@ -86,6 +88,8 @@ public class KingdomApp {
     private static void determinePlayerTurn ( Knight turnPlayer, Knight opponent, Scanner sc ) {
 
          System.out.println();
+
+         clearConsole();
 
          System.out.printf( "%s turn!", turnPlayer.getName() );
 
@@ -176,6 +180,8 @@ public class KingdomApp {
                 validateStatsKnight.validateAllMethods( levelKnight, attackPointsKnight, defensePointsKnight );
 
                 try {
+
+                    System.out.println( "Enter the Knight Ability (STRENGTH_BOOST, DEFENSE_BOOST or NONE)" );
 
                     Abilities knightAbility = Abilities.valueOf ( sc.next() );
 
