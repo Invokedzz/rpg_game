@@ -495,11 +495,15 @@ public class KingdomApp {
 
         try {
 
-            ProcessBuilder processBuilder = new ProcessBuilder( "clear" );
+            if ( System.getProperty("os.name").toLowerCase().contains("mac")) {
 
-            processBuilder.inheritIO();
+                ProcessBuilder processBuilder = new ProcessBuilder( "clear" );
 
-            processBuilder.start().waitFor();
+                processBuilder.inheritIO();
+
+                processBuilder.start().waitFor();
+
+            }
 
         } catch ( IOException | InterruptedException exception ) {
 
